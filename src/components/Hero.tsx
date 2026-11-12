@@ -116,6 +116,21 @@ export default function Hero() {
         <div className="absolute bottom-[-20%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[100px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
         <div className="absolute top-[10%] left-[50%] -translate-x-50% w-[30%] h-[30%] rounded-full bg-pink-600/5 blur-[80px] animate-pulse-slow" style={{ animationDelay: "1s" }} />
 
+        {/* Central Hero Orb Glow — Pulsing Energy Core */}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0.4 }}
+          animate={{
+            scale: [0.8, 1, 0.8],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-blue-600/20 via-purple-600/15 to-transparent blur-[120px] pointer-events-none"
+        />
+
         <div className="relative z-10 text-center px-6 max-w-4xl">
           
           {/* Badge */}

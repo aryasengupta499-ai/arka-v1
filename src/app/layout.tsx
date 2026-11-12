@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ModalProvider } from "@/lib/modal-context";
+import ParticleBackground from "@/components/ParticleBackground";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-brand-black text-white antialiased min-h-screen">
+        <ParticleBackground />
         <ModalProvider>
           <Navbar />
           {children}

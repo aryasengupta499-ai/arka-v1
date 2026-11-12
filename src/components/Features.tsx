@@ -49,7 +49,7 @@ export default function Features() {
           <motion.div
             variants={scrollVariants}
             transition={scrollTransition}
-            className="md:col-span-2 glass-panel glass-panel-hover rounded-3xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]"
+            className="md:col-span-2 glass-panel glass-panel-hover rounded-3xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out hover:-translate-y-2 ring-1 ring-white/10 hover:ring-blue-500/50 bg-gradient-to-br from-white/[0.03] to-transparent hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
           >
             {/* Ambient glow behind icon */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-blue/10 blur-[60px] rounded-full group-hover:bg-brand-blue/20 transition-all duration-500" />
@@ -71,7 +71,7 @@ export default function Features() {
           <motion.div
             variants={scrollVariants}
             transition={scrollTransition}
-            className="col-span-1 glass-panel glass-panel-hover rounded-3xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]"
+            className="col-span-1 glass-panel glass-panel-hover rounded-3xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out hover:-translate-y-2 ring-1 ring-white/10 hover:ring-blue-500/50 bg-gradient-to-br from-white/[0.03] to-transparent hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-600/10 blur-[60px] rounded-full group-hover:bg-indigo-600/20 transition-all duration-500" />
             
@@ -92,7 +92,7 @@ export default function Features() {
           <motion.div
             variants={scrollVariants}
             transition={scrollTransition}
-            className="col-span-1 glass-panel glass-panel-hover rounded-3xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]"
+            className="col-span-1 glass-panel glass-panel-hover rounded-3xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out hover:-translate-y-2 ring-1 ring-white/10 hover:ring-blue-500/50 bg-gradient-to-br from-white/[0.03] to-transparent hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-600/10 blur-[60px] rounded-full group-hover:bg-emerald-600/20 transition-all duration-500" />
             
@@ -113,7 +113,7 @@ export default function Features() {
           <motion.div
             variants={scrollVariants}
             transition={scrollTransition}
-            className="md:col-span-2 glass-panel glass-panel-hover rounded-3xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]"
+            className="md:col-span-2 glass-panel glass-panel-hover rounded-3xl p-8 relative overflow-hidden group transition-all duration-300 ease-in-out hover:-translate-y-2 ring-1 ring-white/10 hover:ring-blue-500/50 bg-gradient-to-br from-white/[0.03] to-transparent hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-pink-600/10 blur-[60px] rounded-full group-hover:bg-pink-600/20 transition-all duration-500" />
             
