@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
-import { loadFull } from "tsparticles";
-import { Particles } from "react-tsparticles";
+import Particles from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 export default function ParticleBackground() {
   useEffect(() => {
-    loadFull(undefined as any);
+    loadSlim(undefined as any);
   }, []);
 
   const particlesOptions: any = {
