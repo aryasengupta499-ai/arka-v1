@@ -15,7 +15,6 @@ export default function Playground() {
     setIsLoading(true);
     setResponse(null);
 
-    // Simulate API call
     await new Promise((r) => setTimeout(r, 1500));
 
     const mockResponses: Record<string, string> = {
@@ -29,107 +28,107 @@ export default function Playground() {
   };
 
   const scrollVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
 
   const scrollTransition = {
-    duration: 0.7,
+    duration: 0.8,
     ease: "easeOut" as const,
   };
 
   return (
-    <section id="playground" className="relative z-10 py-24 px-6 max-w-7xl mx-auto w-full overflow-hidden">
+    <section id="playground" className="relative z-10 py-32 px-6 max-w-7xl mx-auto w-full overflow-hidden">
       
-      {/* Ambient Background Glows — Cobalt */}
-      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] rounded-full bg-cobalt/20 blur-[160px] animate-pulse-slow" />
-      <div className="absolute top-[40%] right-[-10%] w-[50%] h-[40%] rounded-full bg-cobalt/15 blur-[180px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
-      <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-cobalt/10 blur-[140px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
+      {/* ── Ambient Background Glows ── */}
+      <div className="absolute top-[-10%] left=[-10%] w-[60%] h-[40%] rounded-full bg-cobalt/20 blur-[160px] animate-pulse-slow" />
+      <div className="absolute top=[40%] right=[-10%] w=[50%] h=[40%] rounded-full bg-acid/10 blur-[180px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
+      <div className="absolute bottom=[-10%] left=[20%] w=[40%] h=[40%] rounded-full bg-cobalt/10 blur-[140px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
 
       <div className="relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2 className="text-[56px] md:text-[72px] font-black tracking-tight mb-6 text-transparent animate-gradient-text">
             API <span className="text-acid">Playground</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed">
             Test ARKA's intelligent routing with your own prompts. See which model gets selected and the cost in real-time.
           </p>
         </motion.div>
 
-        {/* MacOS-Style Glass Window */}
+        {/* ── MacOS-Style Glass Window ── */}
         <motion.div
           variants={scrollVariants}
           transition={scrollTransition}
-          className="relative rounded-[1.5rem] overflow-hidden border border-white/10 shadow-2xl bg-white/[0.02] backdrop-blur-xl glass-panel-hover group"
+          className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-white/[0.02] backdrop-blur-xl glass-panel-hover group"
         >
           
           {/* Window Header */}
-          <div className="flex items-center px-6 py-4 border-b border-white/10 bg-white/[0.02]">
-            <div className="flex gap-2.5">
-              <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_8px_rgba(245,158,11,0.4)]" />
-              <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_8px_rgba(34,197,94,0.4)]" />
+          <div className="flex items-center px-8 py-5 border-b border-white/10 bg-white/[0.02]">
+            <div className="flex gap-3">
+              <div className="w-3.5 h-3.5 rounded-full bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
+              <div className="w-3.5 h-3.5 rounded-full bg-yellow-500/80 shadow-[0_0_10px_rgba(245,158,11,0.5)]" />
+              <div className="w-3.5 h-3.5 rounded-full bg-green-500/80 shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
             </div>
-            <div className="ml-5 flex items-center gap-1.5">
-              <Code2 className="w-3.5 h-3.5 text-slate-400" />
+            <div className="ml-6 flex items-center gap-2">
+              <Code2 className="w-4 h-4 text-slate-400" />
               <p className="text-xs font-mono text-slate-400">arkaplayground.arctic.route</p>
             </div>
           </div>
 
           {/* Content */}
-          <div className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               
               {/* Input Panel */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <label className="text-xs font-medium text-slate-400 uppercase tracking-wider">Model Selection</label>
-                  <Terminal className="w-3 h-3 text-cobalt/50" />
+              <div className="space-y-5">
+                <div className="flex items-center gap-3">
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Model Selection</label>
+                  <Terminal className="w-4 h-4 text-cobalt/60" />
                 </div>
                 <select
                   value={model}
                   onChange={(e) => setModel(e.target.value)}
-                  className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-slate-300 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/20 transition-all backdrop-blur-sm"
+                  className="w-full bg-white/[0.03] border border-white/10 rounded-[1rem] px-5 py-4 text-slate-300 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/20 transition-all backdrop-blur-sm cursor-pointer"
                 >
                   <option value="gpt-4o">GPT-4o (Premium)</option>
                   <option value="llama-3.1-8b">Llama-3.1-8b (Fast)</option>
                   <option value="claude-3-sonnet">Claude-3-Sonnet (Reasoning)</option>
                 </select>
 
-                <div className="mt-4">
-                  <label className="text-xs font-medium text-slate-400 uppercase tracking-wider">Your Prompt</label>
+                <div className="mt-5">
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Your Prompt</label>
                   <textarea
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask ARKA anything..."
                     rows={6}
-                    className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/20 transition-all backdrop-blur-sm resize-none"
+                    className="w-full bg-white/[0.03] border border-white/10 rounded-[1rem] px-5 py-4 text-white focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/20 transition-all backdrop-blur-sm resize-none"
                   ></textarea>
                 </div>
 
                 <button
                   onClick={handleExecute}
                   disabled={isLoading || !input.trim()}
-                  className={`w-full mt-3 py-3.5 rounded-xl font-bold transition-all duration-300 ${
+                  className={`w-full mt-2 py-5 rounded-[1.5rem] font-black transition-all duration-300 ${
                     isLoading || !input.trim()
-                      ? "bg-white/5 border border-white/10 text-slate-500 disabled:cursor-not-allowed"
-                      : "bg-acid text-midnight font-bold shadow-[0_0_30px_rgba(212,255,36,0.4)] hover:shadow-[0_0_50px_rgba(212,255,36,0.6)] hover:scale-[1.02]"
+                      ? "bg-white/[0.03] border border-white/10 text-slate-500 disabled:cursor-not-allowed"
+                      : "bg-acid text-midnight shadow-[0_0_40px_rgba(212,255,36,0.5)] hover:shadow-[0_0_60px_rgba(212,255,36,0.8)] hover:scale-[1.02] active:scale-95"
                   }`}
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                      <Loader2 className="w-5 h-5 animate-spin mr-3" />
                       Intercepting...
                     </>
                   ) : (
                     <>
-                      <Zap className="w-5 h-5 mr-2" />
+                      <Zap className="w-5 h-5 mr-3" />
                       Execute Request
                     </>
                   )}
@@ -137,18 +136,18 @@ export default function Playground() {
               </div>
 
               {/* Output Panel */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <label className="text-xs font-medium text-slate-400 uppercase tracking-wider">Model Response</label>
+              <div className="space-y-5">
+                <div className="flex items-center gap-3">
+                  <label className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em]">Model Response</label>
                   {response && (
-                    <span className="text-xs text-acid bg-acid/10 px-2 py-1 rounded border border-acid/20">Routed: {model}</span>
+                    <span className="text-[10px] text-acid bg-acid/10 px-3 py-1 rounded border border-acid/20">Routed: {model}</span>
                   )}
                 </div>
                 <div className="relative group">
-                  <div className="bg-white/[0.03] border border-white/10 rounded-xl p-4 min-h-[300px] font-mono text-sm">
+                  <div className="bg-white/[0.03] border border-white/10 rounded-[1.5rem] p-6 min-h-[320px] font-mono text-sm">
                     {isLoading ? (
-                      <div className="flex items-center gap-2 text-slate-500 animate-pulse">
-                        <Loader2 className="w-4 h-4 animate-spin" />
+                      <div className="flex items-center gap-3 text-slate-500 animate-pulse">
+                        <Loader2 className="w-5 h-5 animate-spin" />
                         Processing request...
                       </div>
                     ) : response ? (
@@ -159,11 +158,11 @@ export default function Playground() {
                   </div>
                   {/* Glowing border effect on output when active */}
                   {response && (
-                    <div className="absolute inset-0 rounded-xl border border-acid/30 shadow-[0_0_20px_rgba(212,255,36,0.2)] pointer-events-none" />
+                    <div className="absolute inset-0 rounded-[1.5rem] border border-acid/30 shadow-[0_0_30px_rgba(212,255,36,0.25)] pointer-events-none" />
                   )}
                 </div>
                 {response && (
-                  <div className="flex items-center gap-2 pt-3 mt-1 border-t border-white/10 text-xs font-mono text-slate-500">
+                  <div className="flex items-center gap-4 pt-5 mt-1 border-t border-white/10 text-[10px] font-mono text-slate-500">
                     <span>{model}</span>
                     <span className="w-px h-3 bg-white/10"></span>
                     <span>Tokens: 42</span>

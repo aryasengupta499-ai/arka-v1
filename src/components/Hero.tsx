@@ -108,82 +108,83 @@ export default function Hero() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="relative flex flex-col items-center justify-center overflow-hidden w-full min-h-[90vh] px-6">
+      <section className="relative flex flex-col items-center justify-center overflow-hidden w-full min-h-[100vh] px-6 scanlines">
         
-        {/* Ambient Background Glows — Cobalt Breathing Pulse */}
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-cobalt/30 blur-[120px] animate-pulse-slow" />
-        <div className="absolute top-[40%] right-[-10%] w-[50%] h-[50%] rounded-full bg-cobalt/20 blur-[140px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
-        <div className="absolute bottom-[-20%] left-[20%] w-[40%] h-[40%] rounded-full bg-cobalt/10 blur-[100px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
-        <div className="absolute top-[10%] left-[50%] -translate-x-50% w-[30%] h-[30%] rounded-full bg-cobalt/15 blur-[80px] animate-pulse-slow" style={{ animationDelay: "1s" }} />
+        {/* ── Ambient Background Glows — Cyberpunk ── */}
+        <div className="absolute top-[-15%] left-[-15%] w-[70%] h-[70%] rounded-full bg-cobalt/25 blur-[140px] animate-[ambient-pulse_12s_ease-in-out_infinite]" />
+        <div className="absolute top-[30%] right-[-15%] w-[60%] h-[60%] rounded-full bg-acid/15 blur-[160px] animate-[ambient-drift_15s_ease-in-out_infinite] delay-[3s]" />
+        <div className="absolute bottom-[-20%] left-[15%] w-[50%] h-[50%] rounded-full bg-cobalt/15 blur-[120px] animate-[ambient-pulse_10s_ease-in-out_infinite] delay-[6s]" />
+        <div className="absolute top-[15%] left-[50%] -translate-x-50% w-[40%] h-[40%] rounded-full bg-acid/20 blur-[100px] animate-[ambient-drift_14s_ease-in-out_infinite] delay-[9s]" />
+        <div className="absolute bottom-[10%] right-[20%] w-[35%] h-[35%] rounded-full bg-cobalt/10 blur-[90px] animate-[pulse-slow_9s_ease-in-out_infinite]" />
 
-        {/* Central Hero Orb Glow — Cobalt Pulsing Energy Core */}
+        {/* ── Central Hero Orb — Pulsing Energy Core ── */}
         <motion.div
-          initial={{ scale: 0.8, opacity: 0.4 }}
+          initial={{ scale: 0.7, opacity: 0.3 }}
           animate={{
-            scale: [0.8, 1, 0.8],
-            opacity: [0.3, 0.6, 0.3],
+            scale: [0.7, 1.05, 0.7],
+            opacity: [0.3, 0.7, 0.3],
           }}
           transition={{
-            duration: 5,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-cobalt/40 via-cobalt/15 to-transparent blur-[120px] pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-cobalt/35 via-acid/20 to-transparent blur-[140px] pointer-events-none z-0"
         />
 
-        <div className="relative z-10 text-center px-6 max-w-4xl">
+        <div className="relative z-10 text-center px-6 max-w-6xl">
           
-          {/* Badge */}
+          {/* ── Badge ── */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8"
+            transition={{ duration: 0.7 }}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-midnight/80 border border-cobalt/30 backdrop-blur-md mb-10"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cobalt/50 opacity-75"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cobalt/60 opacity-80"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-cobalt"></span>
             </span>
-            <span className="text-xs font-semibold text-cobalt uppercase tracking-widest">
-              Private Beta — Limited Spots
+            <span className="text-[10px] font-bold text-cobalt uppercase tracking-[0.2em]">
+              Private Beta — Limited Access
             </span>
           </motion.div>
 
-          {/* Headline */}
+          {/* ── Main Headline ── */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-7xl md:text-9xl font-bold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-slate-300 text-neon-glow"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-[90px] md:text-[130px] font-black tracking-tighter mb-8 text-transparent animate-gradient-text"
           >
             ARKA <span className="text-acid">CONTROL</span>
           </motion.h1>
 
-          {/* Subheadline */}
+          {/* ── Subheadline ── */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-6 text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-4 text-slate-400 text-lg md:text-2xl max-w-3xl mx-auto font-light leading-relaxed"
           >
             The financial infrastructure for Generative AI. Intercept, route, and optimize your infrastructure costs in real-time.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* ── CTA Buttons ── */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center"
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
             <button
               onClick={openModal}
-              className="group relative px-10 py-4 bg-acid text-midnight font-bold rounded-full transition-all overflow-hidden hover:scale-105 hover:shadow-[0_0_40px_rgba(212,255,36,0.5)]"
+              className="group relative px-14 py-5 bg-acid text-midnight font-black rounded-full transition-all overflow-hidden hover:scale-105 hover:shadow-[0_0_60px_rgba(212,255,36,0.7)] active:scale-95"
             >
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              <span className="relative z-10 flex items-center gap-2">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <span className="relative z-10 flex items-center gap-3">
                 Enter Control Center
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-5 h-5" />
               </span>
             </button>
 
@@ -191,12 +192,12 @@ export default function Hero() {
               href="https://github.com/arya-ai/arka-v1"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-10 py-4 rounded-full font-bold transition-all border border-cobalt/30 bg-white/5 text-white hover:bg-white/10 hover:border-cobalt/50 hover:text-acid backdrop-blur-sm"
+              className="px-14 py-5 rounded-full font-bold transition-all border border-cobalt/40 bg-white/5 text-white hover:bg-white/10 hover:border-cobalt/60 hover:text-acid hover:shadow-[0_0_30px_rgba(21,10,198,0.4)] backdrop-blur-md"
             >
-              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-              </svg>
-              GitHub
+              <span className="relative z-10 flex items-center gap-3">
+                View GitHub
+                <ArrowRight className="w-5 h-5" />
+              </span>
             </a>
           </motion.div>
         </div>
@@ -209,28 +210,28 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl"
+            className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-midnight/90 backdrop-blur-2xl"
             onClick={closeModal}
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              initial={{ opacity: 0, scale: 0.9, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 30 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="w-full max-w-md bg-white/[0.05] border border-white/10 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-xl"
+              exit={{ opacity: 0, scale: 0.9, y: 40 }}
+              transition={{ type: "spring", damping: 25, stiffness: 400 }}
+              className="w-full max-w-lg bg-white/[0.04] border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl backdrop-blur-xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-white/10 bg-white/5">
-                <h2 id="modal-title" className="text-2xl font-bold text-white">
+              <div className="flex items-center justify-between p-8 border-b border-white/10 bg-white/[0.02]">
+                <h2 id="modal-title" className="text-3xl font-black text-white tracking-tight">
                   Secure your spot.
                 </h2>
                 <button
                   onClick={closeModal}
-                  className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-2xl bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-400 hover:text-white transition-all"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5" />
@@ -243,42 +244,42 @@ export default function Hero() {
                 {step === "form" && (
                   <motion.div
                     key="tier"
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="p-6 space-y-6"
+                    exit={{ opacity: 0, y: -20 }}
+                    className="p-8 space-y-8"
                   >
-                    <p className="text-slate-400 text-sm text-center">
+                    <p className="text-slate-400 text-sm text-center font-light">
                       ARKA {TIERS.find(t => t.id === selectedTier)?.name} is currently in private beta. Enter your email to lock in early-bird pricing.
                     </p>
 
                     {/* Tier Cards */}
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {TIERS.map((tier) => (
                         <button
                           key={tier.id}
                           onClick={() => selectTier(tier.id)}
-                          className={`w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all duration-300 ${
+                          className={`w-full flex items-center justify-between px-6 py-5 rounded-[1.5rem] border transition-all duration-300 ${
                             selectedTier === tier.id
-                              ? "bg-cobalt/10 border-cobalt/50 text-white"
-                              : "bg-white/5 border-white/10 text-slate-400 hover:bg-white/10 hover:border-cobalt/50"
+                              ? "bg-cobalt/15 border-cobalt/50 text-white shadow-[0_0_30px_rgba(21,10,198,0.2)]"
+                              : "bg-white/[0.02] border-white/10 text-slate-400 hover:bg-white/[0.05] hover:border-cobalt/40"
                           }`}
                         >
-                          <div className="flex items-center gap-3">
-                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedTier === tier.id ? "bg-cobalt text-white" : "bg-white/10 text-slate-500"}`}>
-                              {tier.popular ? <Layers className="w-4 h-4" /> : <DollarSign className="w-4 h-4" />}
+                          <div className="flex items-center gap-4">
+                            <div className={`w-12 h-12 rounded-[1rem] flex items-center justify-center ${selectedTier === tier.id ? "bg-cobalt text-white" : "bg-white/10 text-slate-500"}`}>
+                              {tier.popular ? <Layers className="w-5 h-5" /> : <DollarSign className="w-5 h-5" />}
                             </div>
                             <div>
-                              <div className="flex items-baseline gap-1">
-                                <span className="text-lg font-bold text-white">{tier.name}</span>
-                                {tier.popular && <span className="text-xs bg-cobalt/20 text-cobalt px-2 py-0.5 rounded">Popular</span>}
+                              <div className="flex items-baseline gap-2">
+                                <span className="text-xl font-bold text-white">{tier.name}</span>
+                                {tier.popular && <span className="text-xs bg-acid/20 text-acid px-2 py-0.5 rounded font-bold">Most Popular</span>}
                               </div>
-                              <span className="text-slate-500 text-xs">{tier.description}</span>
+                              <span className="text-xs text-slate-500 uppercase tracking-wider">{tier.description}</span>
                             </div>
-                            <span className="text-2xl font-bold text-white">{tier.price}</span>
-                            <span className="text-slate-600 text-xs">/mo</span>
+                            <span className="text-3xl font-black text-white">{tier.price}</span>
+                            <span className="text-xs text-slate-600 uppercase tracking-wider">/mo</span>
                           </div>
-                          <span className="text-xs text-slate-500">Select</span>
+                          <span className="text-xs text-slate-500 font-medium">Select</span>
                         </button>
                       ))}
                     </div>
@@ -286,31 +287,31 @@ export default function Hero() {
                     <div className="pt-4">
                       <motion.form
                         key="form"
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
+                        exit={{ opacity: 0, y: -20 }}
                         onSubmit={handleSubmit}
-                        className="space-y-4"
+                        className="space-y-5"
                       >
-                        <p className="text-slate-400 text-sm text-center">
+                        <p className="text-slate-400 text-sm text-center font-light">
                           Tell us about yourself.
                         </p>
 
-                        <div className="space-y-4">
+                        <div className="space-y-5">
                           {/* Email */}
                           <div>
-                            <label htmlFor="email" className="block text-xs font-medium text-slate-300 mb-1">
+                            <label htmlFor="email" className="block text-xs font-bold text-slate-300 mb-2 uppercase tracking-wider">
                               Work Email *
                             </label>
                             <div className="relative">
-                              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                               <input
                                 id="email"
                                 type="email"
                                 value={formData.email}
                                 onChange={(e) => handleInputChange("email", e.target.value)}
                                 placeholder="founder@startup.com"
-                                className={`w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border ${
+                                className={`w-full pl-12 pr-4 py-4 rounded-[1rem] bg-white/[0.03] border ${
                                   errors.email ? "border-red-500/50" : "border-white/10"
                                 } text-white placeholder-slate-600 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/50 transition-all`}
                                 disabled={isSubmitting}
@@ -325,18 +326,18 @@ export default function Hero() {
 
                           {/* Name */}
                           <div>
-                            <label htmlFor="name" className="block text-xs font-medium text-slate-300 mb-1">
+                            <label htmlFor="name" className="block text-xs font-bold text-slate-300 mb-2 uppercase tracking-wider">
                               Full Name *
                             </label>
                             <div className="relative">
-                              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                              <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                               <input
                                 id="name"
                                 type="text"
                                 value={formData.name}
                                 onChange={(e) => handleInputChange("name", e.target.value)}
                                 placeholder="Jane Doe"
-                                className={`w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border ${
+                                className={`w-full pl-12 pr-4 py-4 rounded-[1rem] bg-white/[0.03] border ${
                                   errors.name ? "border-red-500/50" : "border-white/10"
                                 } text-white placeholder-slate-600 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/50 transition-all`}
                                 disabled={isSubmitting}
@@ -351,18 +352,18 @@ export default function Hero() {
 
                           {/* Company */}
                           <div>
-                            <label htmlFor="company" className="block text-xs font-medium text-slate-300 mb-1">
+                            <label htmlFor="company" className="block text-xs font-bold text-slate-300 mb-2 uppercase tracking-wider">
                               Company
                             </label>
                             <div className="relative">
-                              <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                              <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                               <input
                                 id="company"
                                 type="text"
                                 value={formData.company}
                                 onChange={(e) => handleInputChange("company", e.target.value)}
                                 placeholder="Acme Corp"
-                                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/50 transition-all"
+                                className="w-full pl-12 pr-4 py-4 rounded-[1rem] bg-white/[0.03] border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/50 transition-all"
                                 disabled={isSubmitting}
                                 autoComplete="organization"
                               />
@@ -371,16 +372,16 @@ export default function Hero() {
 
                           {/* Role */}
                           <div>
-                            <label htmlFor="role" className="block text-xs font-medium text-slate-300 mb-1">
+                            <label htmlFor="role" className="block text-xs font-bold text-slate-300 mb-2 uppercase tracking-wider">
                               Role
                             </label>
                             <div className="relative">
-                              <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                              <Briefcase className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
                               <select
                                 id="role"
                                 value={formData.role}
                                 onChange={(e) => handleInputChange("role", e.target.value)}
-                                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/50 transition-all appearance-none"
+                                className="w-full pl-12 pr-4 py-4 rounded-[1rem] bg-white/[0.03] border border-white/10 text-white focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/50 transition-all appearance-none cursor-pointer"
                                 disabled={isSubmitting}
                               >
                                 <option value="">Select your role</option>
@@ -398,7 +399,7 @@ export default function Hero() {
                           <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full mt-2 py-3.5 rounded-xl bg-acid text-midnight font-bold transition-all hover:shadow-[0_0_40px_rgba(212,255,36,0.5)] flex items-center justify-center gap-2 disabled:opacity-50"
+                            className="w-full mt-2 py-5 rounded-[1rem] bg-acid text-midnight font-black transition-all hover:shadow-[0_0_50px_rgba(212,255,36,0.6)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                           >
                             {isSubmitting ? (
                               <>
@@ -410,7 +411,7 @@ export default function Hero() {
                             )}
                           </button>
 
-                          <p className="text-center text-xs text-slate-600 mt-6">
+                          <p className="text-center text-[10px] text-slate-600 mt-6 font-light">
                             No credit card required.
                           </p>
                         </div>
@@ -425,20 +426,20 @@ export default function Hero() {
                     key="success"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="p-6 text-center"
+                    className="p-8 text-center"
                   >
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                      <Check className="w-8 h-8 text-emerald-400" />
+                    <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-acid/20 border border-acid/30 flex items-center justify-center shadow-[0_0_40px_rgba(212,255,36,0.3)]">
+                      <Check className="w-10 h-10 text-acid" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-2">You're on the list!</h3>
-                    <p className="text-slate-400 mb-6">
+                    <h3 className="text-3xl font-black text-white mb-4">You're on the list!</h3>
+                    <p className="text-slate-400 mb-8">
                       We'll email you the moment your{" "}
-                      <span className="text-brand-blue font-bold">{TIERS.find(t => t.id === selectedTier)?.name}</span>{" "}
+                      <span className="text-acid font-black">{TIERS.find(t => t.id === selectedTier)?.name}</span>{" "}
                       tier access is ready.
                     </p>
                     <button
                       onClick={() => { closeModal(); resetForm(); }}
-                      className="w-full py-3 rounded-xl border border-cobalt/30 bg-white/5 text-white font-medium transition-colors hover:border-cobalt/50 hover:text-acid"
+                      className="w-full py-5 rounded-[1rem] border border-cobalt/30 bg-white/[0.03] text-white font-bold transition-all hover:border-cobalt/50 hover:text-acid hover:bg-white/[0.05]"
                     >
                       Close
                     </button>
@@ -451,18 +452,18 @@ export default function Hero() {
                     key="error"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="p-6 text-center"
+                    className="p-8 text-center"
                   >
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center">
-                      <X className="w-8 h-8 text-red-400" />
+                    <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center shadow-[0_0_40px_rgba(239,68,68,0.3)]">
+                      <X className="w-10 h-10 text-red-400" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-2">Something went wrong</h3>
-                    <p className="text-slate-400 mb-6">
-                      Please try again or email us directly at <a href="mailto:beta@arka.com" className="text-brand-blue underline">beta@arka.com</a>
+                    <h3 className="text-3xl font-black text-white mb-4">Something went wrong</h3>
+                    <p className="text-slate-400 mb-8">
+                      Please try again or email us directly at <a href="mailto:beta@arka.com" className="text-cobalt underline hover:text-acid">beta@arka.com</a>
                     </p>
                     <button
                       onClick={() => { setStep("form"); resetForm(); }}
-                      className="w-full py-3 rounded-xl bg-acid text-midnight font-medium transition-colors hover:shadow-[0_0_30px_rgba(212,255,36,0.4)]"
+                      className="w-full py-5 rounded-[1rem] bg-acid text-midnight font-black transition-all hover:shadow-[0_0_40px_rgba(212,255,36,0.5)]"
                     >
                       Try Again
                     </button>
