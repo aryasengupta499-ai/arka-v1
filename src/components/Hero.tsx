@@ -110,13 +110,13 @@ export default function Hero() {
       {/* HERO SECTION */}
       <section className="relative flex flex-col items-center justify-center overflow-hidden w-full min-h-[90vh] px-6">
         
-        {/* Ambient Background Glows — Breathing Pulse */}
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-blue-600/10 blur-[120px] animate-pulse-slow" />
-        <div className="absolute top-[40%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-600/10 blur-[140px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
-        <div className="absolute bottom-[-20%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[100px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
-        <div className="absolute top-[10%] left-[50%] -translate-x-50% w-[30%] h-[30%] rounded-full bg-pink-600/5 blur-[80px] animate-pulse-slow" style={{ animationDelay: "1s" }} />
+        {/* Ambient Background Glows — Cobalt Breathing Pulse */}
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-cobalt/30 blur-[120px] animate-pulse-slow" />
+        <div className="absolute top-[40%] right-[-10%] w-[50%] h-[50%] rounded-full bg-cobalt/20 blur-[140px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
+        <div className="absolute bottom-[-20%] left-[20%] w-[40%] h-[40%] rounded-full bg-cobalt/10 blur-[100px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
+        <div className="absolute top-[10%] left-[50%] -translate-x-50% w-[30%] h-[30%] rounded-full bg-cobalt/15 blur-[80px] animate-pulse-slow" style={{ animationDelay: "1s" }} />
 
-        {/* Central Hero Orb Glow — Pulsing Energy Core */}
+        {/* Central Hero Orb Glow — Cobalt Pulsing Energy Core */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0.4 }}
           animate={{
@@ -128,7 +128,7 @@ export default function Hero() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-blue-600/20 via-purple-600/15 to-transparent blur-[120px] pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-cobalt/40 via-cobalt/15 to-transparent blur-[120px] pointer-events-none"
         />
 
         <div className="relative z-10 text-center px-6 max-w-4xl">
@@ -141,10 +141,10 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue/50 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cobalt/50 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cobalt"></span>
             </span>
-            <span className="text-xs font-semibold text-brand-blue uppercase tracking-widest">
+            <span className="text-xs font-semibold text-cobalt uppercase tracking-widest">
               Private Beta — Limited Spots
             </span>
           </motion.div>
@@ -156,7 +156,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-7xl md:text-9xl font-bold tracking-tighter mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white via-white/80 to-slate-300 text-neon-glow"
           >
-            ARKA <span className="text-brand-blue">CONTROL</span>
+            ARKA <span className="text-acid">CONTROL</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -178,9 +178,9 @@ export default function Hero() {
           >
             <button
               onClick={openModal}
-              className="group relative px-10 py-4 bg-gradient-to-r from-brand-blue via-brand-purple to-brand-blue text-white font-bold rounded-full transition-all overflow-hidden hover:scale-105 hover:shadow-[0_0_30px_rgba(0,112,243,0.4)]"
+              className="group relative px-10 py-4 bg-acid text-midnight font-bold rounded-full transition-all overflow-hidden hover:scale-105 hover:shadow-[0_0_40px_rgba(212,255,36,0.5)]"
             >
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
               <span className="relative z-10 flex items-center gap-2">
                 Enter Control Center
                 <ArrowRight className="w-4 h-4" />
@@ -191,7 +191,7 @@ export default function Hero() {
               href="https://github.com/arya-ai/arka-v1"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-10 py-4 rounded-full font-bold transition-all border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-white/20 backdrop-blur-sm"
+              className="px-10 py-4 rounded-full font-bold transition-all border border-cobalt/30 bg-white/5 text-white hover:bg-white/10 hover:border-cobalt/50 hover:text-acid backdrop-blur-sm"
             >
               <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
@@ -260,18 +260,18 @@ export default function Hero() {
                           onClick={() => selectTier(tier.id)}
                           className={`w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all duration-300 ${
                             selectedTier === tier.id
-                              ? "bg-brand-blue/10 border-brand-blue/50 text-white"
-                              : "bg-white/5 border-white/10 text-slate-400 hover:bg-white/10 hover:border-white/20"
+                              ? "bg-cobalt/10 border-cobalt/50 text-white"
+                              : "bg-white/5 border-white/10 text-slate-400 hover:bg-white/10 hover:border-cobalt/50"
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedTier === tier.id ? "bg-brand-blue text-white" : "bg-white/10 text-slate-500"}`}>
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedTier === tier.id ? "bg-cobalt text-white" : "bg-white/10 text-slate-500"}`}>
                               {tier.popular ? <Layers className="w-4 h-4" /> : <DollarSign className="w-4 h-4" />}
                             </div>
                             <div>
                               <div className="flex items-baseline gap-1">
                                 <span className="text-lg font-bold text-white">{tier.name}</span>
-                                {tier.popular && <span className="text-xs bg-brand-blue/20 text-brand-blue px-2 py-0.5 rounded">Popular</span>}
+                                {tier.popular && <span className="text-xs bg-cobalt/20 text-cobalt px-2 py-0.5 rounded">Popular</span>}
                               </div>
                               <span className="text-slate-500 text-xs">{tier.description}</span>
                             </div>
@@ -312,7 +312,7 @@ export default function Hero() {
                                 placeholder="founder@startup.com"
                                 className={`w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border ${
                                   errors.email ? "border-red-500/50" : "border-white/10"
-                                } text-white placeholder-slate-600 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/50 transition-all`}
+                                } text-white placeholder-slate-600 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/50 transition-all`}
                                 disabled={isSubmitting}
                                 autoComplete="email"
                                 required
@@ -338,7 +338,7 @@ export default function Hero() {
                                 placeholder="Jane Doe"
                                 className={`w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border ${
                                   errors.name ? "border-red-500/50" : "border-white/10"
-                                } text-white placeholder-slate-600 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/50 transition-all`}
+                                } text-white placeholder-slate-600 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/50 transition-all`}
                                 disabled={isSubmitting}
                                 autoComplete="name"
                                 required
@@ -362,7 +362,7 @@ export default function Hero() {
                                 value={formData.company}
                                 onChange={(e) => handleInputChange("company", e.target.value)}
                                 placeholder="Acme Corp"
-                                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/50 transition-all"
+                                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/50 transition-all"
                                 disabled={isSubmitting}
                                 autoComplete="organization"
                               />
@@ -398,7 +398,7 @@ export default function Hero() {
                           <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-brand-blue via-brand-purple to-brand-blue text-white font-bold transition-all hover:shadow-[0_0_20px_rgba(0,112,243,0.4)] flex items-center justify-center gap-2 disabled:opacity-50"
+                            className="w-full mt-2 py-3.5 rounded-xl bg-acid text-midnight font-bold transition-all hover:shadow-[0_0_40px_rgba(212,255,36,0.5)] flex items-center justify-center gap-2 disabled:opacity-50"
                           >
                             {isSubmitting ? (
                               <>
@@ -438,7 +438,7 @@ export default function Hero() {
                     </p>
                     <button
                       onClick={() => { closeModal(); resetForm(); }}
-                      className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium transition-colors border border-white/10"
+                      className="w-full py-3 rounded-xl border border-cobalt/30 bg-white/5 text-white font-medium transition-colors hover:border-cobalt/50 hover:text-acid"
                     >
                       Close
                     </button>
@@ -462,7 +462,7 @@ export default function Hero() {
                     </p>
                     <button
                       onClick={() => { setStep("form"); resetForm(); }}
-                      className="w-full py-3 rounded-xl bg-gradient-to-r from-brand-blue via-brand-purple to-brand-blue text-white font-medium transition-colors"
+                      className="w-full py-3 rounded-xl bg-acid text-midnight font-medium transition-colors hover:shadow-[0_0_30px_rgba(212,255,36,0.4)]"
                     >
                       Try Again
                     </button>

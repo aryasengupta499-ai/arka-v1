@@ -41,10 +41,10 @@ export default function Playground() {
   return (
     <section id="playground" className="relative z-10 py-24 px-6 max-w-7xl mx-auto w-full overflow-hidden">
       
-      {/* Ambient Background Glows — Breathing Pulse */}
-      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] rounded-full bg-brand-blue/5 blur-[160px] animate-pulse-slow" />
-      <div className="absolute top-[40%] right-[-10%] w-[50%] h-[40%] rounded-full bg-brand-purple/5 blur-[180px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
-      <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[140px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
+      {/* Ambient Background Glows — Cobalt */}
+      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] rounded-full bg-cobalt/20 blur-[160px] animate-pulse-slow" />
+      <div className="absolute top-[40%] right-[-10%] w-[50%] h-[40%] rounded-full bg-cobalt/15 blur-[180px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
+      <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-cobalt/10 blur-[140px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
 
       <div className="relative z-10">
         <motion.div
@@ -55,7 +55,7 @@ export default function Playground() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-            API Playground
+            API <span className="text-acid">Playground</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             Test ARKA's intelligent routing with your own prompts. See which model gets selected and the cost in real-time.
@@ -90,12 +90,12 @@ export default function Playground() {
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
                   <label className="text-xs font-medium text-slate-400 uppercase tracking-wider">Model Selection</label>
-                  <Terminal className="w-3 h-3 text-brand-blue/50" />
+                  <Terminal className="w-3 h-3 text-cobalt/50" />
                 </div>
                 <select
                   value={model}
                   onChange={(e) => setModel(e.target.value)}
-                  className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-slate-300 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/20 transition-all backdrop-blur-sm"
+                  className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-slate-300 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/20 transition-all backdrop-blur-sm"
                 >
                   <option value="gpt-4o">GPT-4o (Premium)</option>
                   <option value="llama-3.1-8b">Llama-3.1-8b (Fast)</option>
@@ -109,7 +109,7 @@ export default function Playground() {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask ARKA anything..."
                     rows={6}
-                    className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/20 transition-all backdrop-blur-sm resize-none"
+                    className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt/20 transition-all backdrop-blur-sm resize-none"
                   ></textarea>
                 </div>
 
@@ -119,7 +119,7 @@ export default function Playground() {
                   className={`w-full mt-3 py-3.5 rounded-xl font-bold transition-all duration-300 ${
                     isLoading || !input.trim()
                       ? "bg-white/5 border border-white/10 text-slate-500 disabled:cursor-not-allowed"
-                      : "bg-gradient-to-r from-brand-blue via-brand-purple to-brand-blue text-white shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)]"
+                      : "bg-acid text-midnight font-bold shadow-[0_0_30px_rgba(212,255,36,0.4)] hover:shadow-[0_0_50px_rgba(212,255,36,0.6)] hover:scale-[1.02]"
                   }`}
                 >
                   {isLoading ? (
@@ -141,7 +141,7 @@ export default function Playground() {
                 <div className="flex items-center gap-2">
                   <label className="text-xs font-medium text-slate-400 uppercase tracking-wider">Model Response</label>
                   {response && (
-                    <span className="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20">Routed: {model}</span>
+                    <span className="text-xs text-acid bg-acid/10 px-2 py-1 rounded border border-acid/20">Routed: {model}</span>
                   )}
                 </div>
                 <div className="relative group">
@@ -159,7 +159,7 @@ export default function Playground() {
                   </div>
                   {/* Glowing border effect on output when active */}
                   {response && (
-                    <div className="absolute inset-0 rounded-xl border border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.2)] pointer-events-none" />
+                    <div className="absolute inset-0 rounded-xl border border-acid/30 shadow-[0_0_20px_rgba(212,255,36,0.2)] pointer-events-none" />
                   )}
                 </div>
                 {response && (
@@ -168,7 +168,7 @@ export default function Playground() {
                     <span className="w-px h-3 bg-white/10"></span>
                     <span>Tokens: 42</span>
                     <span className="w-px h-3 bg-white/10"></span>
-                    <span className="text-emerald-400">Cost: $0.0012</span>
+                    <span className="text-acid">Cost: $0.0012</span>
                   </div>
                 )}
               </div>

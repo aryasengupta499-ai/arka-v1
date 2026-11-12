@@ -1,24 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a14;
+  --background: #030407;
   --foreground: #f8fafc;
-  --brand-black: #0a0a14;
-  --brand-blue: #0070f3;
-  --brand-purple: #7c3aed;
-  --brand-neon-blue: #22d3ee;
+  --midnight: #030407;
+  --cobalt: #150AC6;
+  --acid: #D4FF24;
   --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-hover-border: rgba(59, 130, 246, 0.5);
+  --glass-border: rgba(21, 10, 198, 0.1);
+  --glass-hover-border: rgba(21, 10, 198, 0.5);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-brand-black: var(--brand-black);
-  --color-brand-blue: var(--brand-blue);
-  --color-brand-purple: var(--brand-purple);
-  --color-brand-neon-blue: var(--brand-neon-blue);
+  --color-midnight: var(--midnight);
+  --color-cobalt: var(--cobalt);
+  --color-acid: var(--acid);
   --color-glass-bg: var(--glass-bg);
   --color-glass-border: var(--glass-border);
   --color-glass-hover-border: var(--glass-hover-border);

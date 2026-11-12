@@ -16,10 +16,10 @@ export default function Integration() {
   return (
     <section className="relative z-10 py-24 px-6 max-w-7xl mx-auto w-full overflow-hidden">
       
-      {/* Ambient Background Glows — Breathing Pulse */}
-      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] rounded-full bg-brand-blue/5 blur-[160px] animate-pulse-slow" />
-      <div className="absolute top-[40%] right-[-10%] w-[50%] h-[40%] rounded-full bg-brand-purple/5 blur-[180px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
-      <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[140px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
+      {/* Ambient Background Glows — Cobalt */}
+      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] rounded-full bg-cobalt/20 blur-[160px] animate-pulse-slow" />
+      <div className="absolute top-[40%] right-[-10%] w-[50%] h-[40%] rounded-full bg-cobalt/15 blur-[180px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
+      <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-cobalt/10 blur-[140px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
 
       <div className="relative z-10">
         <motion.div
@@ -30,7 +30,7 @@ export default function Integration() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-            Change one line of code.
+            Change <span className="text-acid">one line</span> of code.
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             No heavy SDKs. Just point your existing OpenAI client to the ARKA proxy.
@@ -60,17 +60,17 @@ export default function Integration() {
           <div className="p-6 overflow-x-auto">
             <pre className="text-sm md:text-base font-mono leading-relaxed text-slate-300">
               <code>
-                <span className="text-purple-400">import</span> <span className="text-blue-400">OpenAI</span> <span className="text-purple-400">from</span> <span className="text-green-300">'openai'</span>;<br /><br />
+                <span className="text-cobalt">import</span> <span className="text-cobalt">OpenAI</span> <span className="text-cobalt">from</span> <span className="text-acid">'openai'</span>;<br /><br />
                 <span className="text-zinc-500">{`// 1. Initialize the client`}</span><br />
-                <span className="text-purple-400">const</span> <span className="text-blue-400">openai</span> <span className="text-white">=</span> <span className="text-purple-400">new</span> <span className="text-yellow-200">OpenAI</span>({`{`}<br />
-                {`  `}apiKey: process.env.<span className="text-blue-300">OPENAI_API_KEY</span>,<br />
+                <span className="text-cobalt">const</span> <span className="text-cobalt">openai</span> <span className="text-white">=</span> <span className="text-cobalt">new</span> <span className="text-acid">OpenAI</span>({`{`}<br />
+                {`  `}apiKey: process.env.<span className="text-cobalt">OPENAI_API_KEY</span>,<br />
                 <span className="text-zinc-500 bg-red-500/10 block px-2 -mx-2">{`  // baseURL: 'https://api.openai.com/v1',  <-- Remove this`}</span>
-                <span className="text-green-400 bg-green-500/10 block px-2 -mx-2">{`  baseURL: 'https://proxy.arka.com/v1',      <-- Add ARKA`}</span>
+                <span className="text-acid bg-acid/10 block px-2 -mx-2">{`  baseURL: 'https://proxy.arka.com/v1',      <-- Add ARKA`}</span>
                 {`}`});<br /><br />
                 <span className="text-zinc-500">{`// 2. ARKA automatically intercepts and routes!`}</span><br />
-                <span className="text-purple-400">const</span> <span className="text-blue-400">response</span> <span className="text-white">=</span> <span className="text-purple-400">await</span> openai.chat.completions.<span className="text-yellow-200">create</span>({`{`}<br />
-                {`  `}model: <span className="text-green-300">'gpt-4'</span>, <span className="text-zinc-500">{`// ARKA will swap to 3.5 if simple enough`}</span><br />
-                {`  `}messages: [{`{`} role: <span className="text-green-300">'user'</span>, content: <span className="text-green-300">'Hello!'</span> {`}`}],<br />
+                <span className="text-cobalt">const</span> <span className="text-cobalt">response</span> <span className="text-white">=</span> <span className="text-cobalt">await</span> openai.chat.completions.<span className="text-acid">create</span>({`{`}<br />
+                {`  `}model: <span className="text-cobalt">'gpt-4'</span>, <span className="text-zinc-500">{`// ARKA will swap to 3.5 if simple enough`}</span><br />
+                {`  `}messages: [{`{`} role: <span className="text-cobalt">'user'</span>, content: <span className="text-cobalt">'Hello!'</span> {`}`}],<br />
                 {`}`});
               </code>
             </pre>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-white/10 bg-brand-black pt-16 pb-8 relative z-10">
+    <footer className="w-full border-t border-white/10 bg-midnight pt-16 pb-8 relative z-10">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Main Footer Content */}
@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="font-bold text-2xl tracking-tighter text-white">
-              ARKA <span className="text-brand-blue">.</span>
+              ARKA <span className="text-cobalt">.</span>
             </Link>
             <p className="mt-4 text-zinc-400 max-w-sm">
               The intelligent proxy engine for Generative AI. 
