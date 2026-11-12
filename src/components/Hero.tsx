@@ -110,11 +110,11 @@ export default function Hero() {
       {/* HERO SECTION */}
       <section className="relative flex flex-col items-center justify-center overflow-hidden w-full min-h-[90vh] px-6">
         
-        {/* Ambient Background Glows */}
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-blue-600/10 blur-[120px] animate-[ambient-pulse_8s_ease-in-out_infinite]" />
-        <div className="absolute top-[40%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-600/10 blur-[140px] animate-[ambient-drift_10s_ease-in-out_infinite] delay-[2s]" />
-        <div className="absolute bottom-[-20%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[100px] animate-[ambient-pulse_12s_ease-in-out_infinite] delay-[4s]" />
-        <div className="absolute top-[10%] left-[50%] -translate-x-50% w-[30%] h-[30%] rounded-full bg-pink-600/5 blur-[80px] animate-[ambient-drift_8s_ease-in-out_infinite] delay-[1s]" />
+        {/* Ambient Background Glows — Breathing Pulse */}
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-blue-600/10 blur-[120px] animate-pulse-slow" />
+        <div className="absolute top-[40%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-600/10 blur-[140px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
+        <div className="absolute bottom-[-20%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[100px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
+        <div className="absolute top-[10%] left-[50%] -translate-x-50% w-[30%] h-[30%] rounded-full bg-pink-600/5 blur-[80px] animate-pulse-slow" style={{ animationDelay: "1s" }} />
 
         <div className="relative z-10 text-center px-6 max-w-4xl">
           
