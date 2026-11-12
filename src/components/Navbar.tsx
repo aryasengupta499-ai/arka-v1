@@ -19,6 +19,7 @@ export default function Navbar() {
         <div className="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
           <Link href="#features" className="hover:text-white transition-colors">Features</Link>
           <Link href="#proxy" className="hover:text-white transition-colors">Smart Proxy</Link>
+          <Link href="/dashboard" className="hover:text-white transition-colors">Control Center</Link>
           <Link href="#docs" className="hover:text-white transition-colors">Docs</Link>
         </div>
 

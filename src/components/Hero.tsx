@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Check, Loader2, Mail, User, Building2, Briefcase } from "lucide-react";
+import { X, Check, Loader2, Mail, User, Building2, Briefcase, DollarSign, Zap, Layers } from "lucide-react";
 import { useModal } from "@/lib/modal-context";
 
 interface FormData {
@@ -11,12 +11,19 @@ interface FormData {
   company: string;
   role: string;
   useCase: string;
+  tier: string;
 }
 
 interface FormErrors {
   email?: string;
   name?: string;
 }
+
+const TIERS = [
+  { id: "hobby", name: "Hobby", price: "$0", description: "For solo devs and side projects", features: ["10,000 requests/mo", "Live Cost Telemetry", "24-hour log retention"] },
+  { id: "pro", name: "Pro", price: "$49", description: "For growing AI startups", features: ["1,000,000 requests/mo", "Budget Guardrails", "30-day log retention"], popular: true },
+  { id: "scale", name: "Scale", price: "$199", description: "For production workloads", features: ["5,000,000 requests/mo", "API Key Management", "Unlimited retention"] },
+];
 
 export default function Hero() {
   const { isOpen, openModal, closeModal } = useModal();
@@ -28,8 +35,10 @@ export default function Hero() {
     company: "",
     role: "",
     useCase: "",
+    tier: "hobby",
   });
   const [errors, setErrors] = useState<FormErrors>({});
+  const [selectedTier, setSelectedTier] = useState("hobby");
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -55,6 +64,7 @@ export default function Hero() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
+          tier: selectedTier,
           source: "hero_cta",
         }),
       });
@@ -85,8 +95,14 @@ export default function Hero() {
 
   const resetForm = () => {
     setStep("form");
-    setFormData({ email: "", name: "", company: "", role: "", useCase: "" });
+    setFormData({ email: "", name: "", company: "", role: "", useCase: "", tier: "hobby" });
+    setSelectedTier("hobby");
     setErrors({});
+  };
+
+  const selectTier = (tierId: string) => {
+    setSelectedTier(tierId);
+    setFormData((prev) => ({ ...prev, tier: tierId }));
   };
 
   return (
@@ -102,10 +118,11 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.02] mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
-            <span className="text-xs font-semibold text-zinc-400 uppercase tracking-widest">
-              Private Beta — Limited Spots
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
+            ARKA Engine v2.0 is Live
           </motion.div>
 
           <motion.h1
@@ -123,8 +140,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-6 text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto"
           >
-            The high-performance FinOps control plane for Generative AI. 
-            Intercept, route, and optimize your infrastructure costs in real-time.
+            The financial infrastructure for Generative AI. Intercept and optimize costs with precision.
           </motion.p>
 
           <motion.div
@@ -137,7 +153,7 @@ export default function Hero() {
               onClick={openModal}
               className="bg-brand-blue hover:bg-blue-600 text-white px-10 py-4 rounded-full font-bold transition-all shadow-[0_0_40px_rgba(0,112,243,0.3)] flex items-center gap-2"
             >
-              Get Beta Access
+              Enter Control Center
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -157,14 +173,14 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* BETA ACCESS MODAL */}
+      {/* WAITLIST MODAL */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
             onClick={closeModal}
             role="dialog"
             aria-modal="true"
@@ -175,17 +191,17 @@ export default function Hero() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="w-full max-w-md bg-brand-black border border-white/10 rounded-2xl overflow-hidden shadow-2xl"
+              className="w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-white/10">
-                <h2 id="modal-title" className="text-xl font-bold text-white">
-                  Join the Private Beta
+                <h2 id="modal-title" className="text-2xl font-bold text-white">
+                  Secure your spot.
                 </h2>
                 <button
                   onClick={closeModal}
-                  className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-zinc-400 hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-slate-500 hover:text-white transition-colors"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5" />
@@ -194,163 +210,184 @@ export default function Hero() {
 
               {/* Content */}
               <AnimatePresence mode="wait">
-                {/* FORM STEP */}
+                {/* TIER SELECTION STEP */}
                 {step === "form" && (
-                  <motion.form
-                    key="form"
+                  <motion.div
+                    key="tier"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    onSubmit={handleSubmit}
-                    className="p-6 space-y-4"
+                    className="p-6 space-y-6"
                   >
-                    <p className="text-zinc-400 text-sm text-center">
-                      We&apos;re onboarding select teams. Tell us about yourself.
+                    <p className="text-slate-400 text-sm text-center">
+                      ARKA {TIERS.find(t => t.id === selectedTier)?.name} is currently in private beta. Enter your email to lock in early-bird pricing.
                     </p>
 
-                    <div className="space-y-4">
-                      {/* Email */}
-                      <div>
-                        <label htmlFor="email" className="block text-xs font-medium text-zinc-300 mb-1">
-                          Work Email *
-                        </label>
-                        <div className="relative">
-                          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
-                          <input
-                            id="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={(e) => handleInputChange("email", e.target.value)}
-                            placeholder="you@company.com"
-                            className={`w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border ${
-                              errors.email ? "border-red-500/50" : "border-white/10"
-                            } text-white placeholder-zinc-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all`}
-                            disabled={isSubmitting}
-                            autoComplete="email"
-                            required
-                          />
-                        </div>
-                        {errors.email && (
-                          <p className="mt-1 text-xs text-red-400">{errors.email}</p>
-                        )}
-                      </div>
-
-                      {/* Name */}
-                      <div>
-                        <label htmlFor="name" className="block text-xs font-medium text-zinc-300 mb-1">
-                          Full Name *
-                        </label>
-                        <div className="relative">
-                          <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
-                          <input
-                            id="name"
-                            type="text"
-                            value={formData.name}
-                            onChange={(e) => handleInputChange("name", e.target.value)}
-                            placeholder="Jane Doe"
-                            className={`w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border ${
-                              errors.name ? "border-red-500/50" : "border-white/10"
-                            } text-white placeholder-zinc-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all`}
-                            disabled={isSubmitting}
-                            autoComplete="name"
-                            required
-                          />
-                        </div>
-                        {errors.name && (
-                          <p className="mt-1 text-xs text-red-400">{errors.name}</p>
-                        )}
-                      </div>
-
-                      {/* Company */}
-                      <div>
-                        <label htmlFor="company" className="block text-xs font-medium text-zinc-300 mb-1">
-                          Company
-                        </label>
-                        <div className="relative">
-                          <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
-                          <input
-                            id="company"
-                            type="text"
-                            value={formData.company}
-                            onChange={(e) => handleInputChange("company", e.target.value)}
-                            placeholder="Acme Corp"
-                            className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all"
-                            disabled={isSubmitting}
-                            autoComplete="organization"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Role */}
-                      <div>
-                        <label htmlFor="role" className="block text-xs font-medium text-zinc-300 mb-1">
-                          Role
-                        </label>
-                        <div className="relative">
-                          <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
-                          <select
-                            id="role"
-                            value={formData.role}
-                            onChange={(e) => handleInputChange("role", e.target.value)}
-                            className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all appearance-none"
-                            disabled={isSubmitting}
-                          >
-                            <option value="">Select your role</option>
-                            <option value="engineer">Software Engineer</option>
-                            <option value="lead">Tech Lead / Engineering Manager</option>
-                            <option value="cto">CTO / VP Engineering</option>
-                            <option value="founder">Founder</option>
-                            <option value="finops">FinOps / Platform Engineer</option>
-                            <option value="other">Other</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      {/* Use Case */}
-                      <div>
-                        <label htmlFor="useCase" className="block text-xs font-medium text-zinc-300 mb-1">
-                          Primary Use Case
-                        </label>
-                        <select
-                          id="useCase"
-                          value={formData.useCase}
-                          onChange={(e) => handleInputChange("useCase", e.target.value)}
-                          className="w-full pl-4 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all appearance-none"
-                          disabled={isSubmitting}
+                    {/* Tier Cards */}
+                    <div className="space-y-3">
+                      {TIERS.map((tier) => (
+                        <button
+                          key={tier.id}
+                          onClick={() => selectTier(tier.id)}
+                          className={`w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all ${
+                            selectedTier === tier.id
+                              ? "bg-indigo-500/10 border-indigo-500/50 text-indigo-300"
+                              : "bg-white/[0.02] border-white/10 text-slate-400 hover:bg-white/[0.05] hover:border-white/20"
+                          }`}
                         >
-                          <option value="">What problem are you solving?</option>
-                          <option value="cost_reduction">Reduce LLM API costs</option>
-                          <option value="budget_control">Set budget limits per team/project</option>
-                          <option value="model_routing">Auto-route to best model per task</option>
-                          <option value="analytics">Real-time cost/usage visibility</option>
-                          <option value="multi_model">Use multiple providers (OpenAI, Anthropic, open-source)</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
+                          <div className="flex items-center gap-3">
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedTier === tier.id ? "bg-indigo-500 text-white" : "bg-white/[0.05] text-slate-500"}`}>
+                              {tier.popular ? <Layers className="w-4 h-4" /> : <DollarSign className="w-4 h-4" />}
+                            </div>
+                            <div>
+                              <div className="flex items-baseline gap-1">
+                                <span className="text-lg font-bold text-white">{tier.name}</span>
+                                {tier.popular && <span className="text-xs bg-indigo-500/20 text-indigo-400 px-2 py-0.5 rounded">Popular</span>}
+                              </div>
+                              <span className="text-slate-500 text-xs">{tier.description}</span>
+                            </div>
+                            <span className="text-2xl font-bold text-white">{tier.price}</span>
+                            <span className="text-slate-600 text-xs">/mo</span>
+                          </div>
+                          <span className="text-xs text-slate-500">Select</span>
+                        </button>
+                      ))}
                     </div>
 
-                    {/* Submit Button */}
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full mt-2 py-3.5 rounded-xl bg-brand-blue hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(0,112,243,0.3)]"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                          Submitting...
-                        </>
-                      ) : (
-                        "Request Access"
-                      )}
-                    </button>
+                    <div className="pt-4">
+                      <motion.form
+                        key="form"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        onSubmit={handleSubmit}
+                        className="space-y-4"
+                      >
+                        <p className="text-slate-400 text-sm text-center">
+                          Tell us about yourself.
+                        </p>
 
-                    <p className="text-center text-xs text-zinc-500">
-                      By submitting, you agree to our{" "}
-                      <a href="#" className="underline hover:text-zinc-300">Privacy Policy</a>
-                      {" "}and consent to being contacted about ARKA Control.
-                    </p>
-                  </motion.form>
+                        <div className="space-y-4">
+                          {/* Email */}
+                          <div>
+                            <label htmlFor="email" className="block text-xs font-medium text-slate-300 mb-1">
+                              Work Email *
+                            </label>
+                            <div className="relative">
+                              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                              <input
+                                id="email"
+                                type="email"
+                                value={formData.email}
+                                onChange={(e) => handleInputChange("email", e.target.value)}
+                                placeholder="founder@startup.com"
+                                className={`w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border ${
+                                  errors.email ? "border-red-500/50" : "border-white/10"
+                                } text-white placeholder-slate-600 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all`}
+                                disabled={isSubmitting}
+                                autoComplete="email"
+                                required
+                              />
+                            </div>
+                            {errors.email && (
+                              <p className="mt-1 text-xs text-red-400">{errors.email}</p>
+                            )}
+                          </div>
+
+                          {/* Name */}
+                          <div>
+                            <label htmlFor="name" className="block text-xs font-medium text-slate-300 mb-1">
+                              Full Name *
+                            </label>
+                            <div className="relative">
+                              <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                              <input
+                                id="name"
+                                type="text"
+                                value={formData.name}
+                                onChange={(e) => handleInputChange("name", e.target.value)}
+                                placeholder="Jane Doe"
+                                className={`w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border ${
+                                  errors.name ? "border-red-500/50" : "border-white/10"
+                                } text-white placeholder-slate-600 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all`}
+                                disabled={isSubmitting}
+                                autoComplete="name"
+                                required
+                              />
+                            </div>
+                            {errors.name && (
+                              <p className="mt-1 text-xs text-red-400">{errors.name}</p>
+                            )}
+                          </div>
+
+                          {/* Company */}
+                          <div>
+                            <label htmlFor="company" className="block text-xs font-medium text-slate-300 mb-1">
+                              Company
+                            </label>
+                            <div className="relative">
+                              <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                              <input
+                                id="company"
+                                type="text"
+                                value={formData.company}
+                                onChange={(e) => handleInputChange("company", e.target.value)}
+                                placeholder="Acme Corp"
+                                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-slate-600 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all"
+                                disabled={isSubmitting}
+                                autoComplete="organization"
+                              />
+                            </div>
+                          </div>
+
+                          {/* Role */}
+                          <div>
+                            <label htmlFor="role" className="block text-xs font-medium text-slate-300 mb-1">
+                              Role
+                            </label>
+                            <div className="relative">
+                              <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                              <select
+                                id="role"
+                                value={formData.role}
+                                onChange={(e) => handleInputChange("role", e.target.value)}
+                                className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-all appearance-none"
+                                disabled={isSubmitting}
+                              >
+                                <option value="">Select your role</option>
+                                <option value="engineer">Software Engineer</option>
+                                <option value="lead">Tech Lead / Engineering Manager</option>
+                                <option value="cto">CTO / VP Engineering</option>
+                                <option value="founder">Founder</option>
+                                <option value="finops">FinOps / Platform Engineer</option>
+                                <option value="other">Other</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          {/* Submit Button */}
+                          <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="w-full mt-2 py-3.5 rounded-xl bg-brand-blue hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(0,112,243,0.3)]"
+                          >
+                            {isSubmitting ? (
+                              <>
+                                <Loader2 className="w-5 h-5 animate-spin" />
+                                Securing...
+                              </>
+                            ) : (
+                              "Join the Waitlist"
+                            )}
+                          </button>
+
+                          <p className="text-center text-xs text-slate-600 mt-6">
+                            No credit card required.
+                          </p>
+                        </div>
+                      </motion.form>
+                    </div>
+                  </motion.div>
                 )}
 
                 {/* SUCCESS STEP */}
@@ -364,13 +401,15 @@ export default function Hero() {
                     <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
                       <Check className="w-8 h-8 text-emerald-400" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-2">You&apos;re on the list!</h3>
-                    <p className="text-zinc-400 mb-6">
-                      We&apos;ll reach out to <strong className="text-white">{formData.email}</strong> within 24 hours with next steps.
+                    <h3 className="text-2xl font-bold text-white mb-2">You're on the list!</h3>
+                    <p className="text-slate-400 mb-6">
+                      We'll email you the moment your{" "}
+                      <span className="text-brand-blue font-bold">{TIERS.find(t => t.id === selectedTier)?.name}</span>{" "}
+                      tier access is ready.
                     </p>
                     <button
-                      onClick={closeModal}
-                      className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium transition-colors"
+                      onClick={() => { closeModal(); resetForm(); }}
+                      className="w-full py-3 rounded-xl bg-white/[0.05] hover:bg-white/10 text-white font-medium transition-colors"
                     >
                       Close
                     </button>
@@ -389,7 +428,7 @@ export default function Hero() {
                       <X className="w-8 h-8 text-red-400" />
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-2">Something went wrong</h3>
-                    <p className="text-zinc-400 mb-6">
+                    <p className="text-slate-400 mb-6">
                       Please try again or email us directly at <a href="mailto:beta@arka.com" className="text-brand-blue underline">beta@arka.com</a>
                     </p>
                     <button

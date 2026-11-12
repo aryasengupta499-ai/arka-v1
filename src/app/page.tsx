@@ -1,5 +1,7 @@
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import Pricing from "@/components/Pricing";
+import Playground from "@/components/Playground";
 import Integration from "@/components/Integration";
 
 export default function Home() {
@@ -8,6 +10,10 @@ export default function Home() {
       <Hero />
       {/* THE NEW BENTO GRID */}
       <Features />
+      {/* PRICING */}
+      <Pricing />
+      {/* API PLAYGROUND */}
+      <Playground />
       {/* THE CODE DEMO */}
       <Integration />
     </main>
