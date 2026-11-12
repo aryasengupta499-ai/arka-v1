@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Zap, Loader2, Code2, Terminal } from "lucide-react";
 
 export default function Playground() {
@@ -27,26 +28,46 @@ export default function Playground() {
     setIsLoading(false);
   };
 
+  const scrollVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const scrollTransition = {
+    duration: 0.7,
+    ease: "easeOut" as const,
+  };
+
   return (
     <section id="playground" className="relative z-10 py-24 px-6 max-w-7xl mx-auto w-full overflow-hidden">
       
-      {/* Ambient Background Glows */}
-      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] rounded-full bg-brand-blue/5 blur-[160px] animate-[ambient-pulse_10s_ease-in-out_infinite]" />
-      <div className="absolute top-[40%] right-[-10%] w-[50%] h-[40%] rounded-full bg-brand-purple/5 blur-[180px] animate-[ambient-drift_12s_ease-in-out_infinite] delay-[2s]" />
-      <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[140px] animate-[ambient-pulse_8s_ease-in-out_infinite] delay-[4s]" />
+      {/* Ambient Background Glows — Breathing Pulse */}
+      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] rounded-full bg-brand-blue/5 blur-[160px] animate-pulse-slow" />
+      <div className="absolute top-[40%] right-[-10%] w-[50%] h-[40%] rounded-full bg-brand-purple/5 blur-[180px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
+      <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[140px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
 
       <div className="relative z-10">
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
             API Playground
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             Test ARKA's intelligent routing with your own prompts. See which model gets selected and the cost in real-time.
           </p>
-        </div>
+        </motion.div>
 
         {/* MacOS-Style Glass Window */}
-        <div className="relative rounded-[1.5rem] overflow-hidden border border-white/10 shadow-2xl bg-white/[0.02] backdrop-blur-xl glass-panel-hover group">
+        <motion.div
+          variants={scrollVariants}
+          transition={scrollTransition}
+          className="relative rounded-[1.5rem] overflow-hidden border border-white/10 shadow-2xl bg-white/[0.02] backdrop-blur-xl glass-panel-hover group"
+        >
           
           {/* Window Header */}
           <div className="flex items-center px-6 py-4 border-b border-white/10 bg-white/[0.02]">
@@ -153,7 +174,7 @@ export default function Playground() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
