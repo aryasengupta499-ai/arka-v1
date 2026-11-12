@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function Pricing() {
   const TIERS = [
     {
@@ -32,29 +36,53 @@ export default function Pricing() {
     },
   ];
 
+  const scrollVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const scrollTransition = {
+    duration: 0.7,
+    ease: "easeOut" as const,
+  };
+
   return (
     <section id="pricing" className="relative z-10 py-24 px-6 max-w-7xl mx-auto w-full overflow-hidden">
       
-      {/* Ambient Background Glows */}
-      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] rounded-full bg-brand-purple/10 blur-[160px] animate-[ambient-pulse_10s_ease-in-out_infinite]" />
-      <div className="absolute top-[40%] right-[-10%] w-[50%] h-[40%] rounded-full bg-brand-blue/10 blur-[180px] animate-[ambient-drift_12s_ease-in-out_infinite] delay-[2s]" />
-      <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[140px] animate-[ambient-pulse_8s_ease-in-out_infinite] delay-[4s]" />
+      {/* Ambient Background Glows — Breathing Pulse */}
+      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] rounded-full bg-brand-purple/10 blur-[160px] animate-pulse-slow" />
+      <div className="absolute top-[40%] right-[-10%] w-[50%] h-[40%] rounded-full bg-brand-blue/10 blur-[180px] animate-pulse-slow" style={{ animationDelay: "2s" }} />
+      <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[140px] animate-pulse-slow" style={{ animationDelay: "4s" }} />
 
       <div className="relative z-10">
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-center mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
             Pricing built for scale.
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             Start optimizing for free. Upgrade when your AI traffic demands enterprise guardrails.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7, ease: "easeOut", staggerChildren: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
           {TIERS.map((tier) => (
-            <div
+            <motion.div
               key={tier.id}
-              className={`flex flex-col rounded-3xl p-8 relative overflow-hidden transition-all duration-500 ${
+              variants={scrollVariants}
+              transition={scrollTransition}
+              className={`flex flex-col rounded-3xl p-8 relative overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] ${
                 tier.popular
                   ? "glass-panel gradient-border bg-white/[0.03] shadow-2xl shadow-indigo-500/20 transform md:-translate-y-4 border-white/10"
                   : "glass-panel glass-panel-hover bg-white/[0.02] border-white/10 hover:border-brand-blue/40"
@@ -94,9 +122,9 @@ export default function Pricing() {
                   {tier.cta}
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
