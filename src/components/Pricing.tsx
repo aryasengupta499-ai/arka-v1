@@ -33,13 +33,19 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="relative z-10 py-24 px-6 border-t border-white/5 bg-[#030303]">
-      <div className="max-w-6xl mx-auto">
+    <section id="pricing" className="relative z-10 py-24 px-6 max-w-7xl mx-auto w-full overflow-hidden">
+      
+      {/* Ambient Background Glows */}
+      <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] rounded-full bg-brand-purple/10 blur-[160px] animate-[ambient-pulse_10s_ease-in-out_infinite]" />
+      <div className="absolute top-[40%] right-[-10%] w-[50%] h-[40%] rounded-full bg-brand-blue/10 blur-[180px] animate-[ambient-drift_12s_ease-in-out_infinite] delay-[2s]" />
+      <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] rounded-full bg-cyan-600/5 blur-[140px] animate-[ambient-pulse_8s_ease-in-out_infinite] delay-[4s]" />
+
+      <div className="relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
             Pricing built for scale.
           </h2>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
             Start optimizing for free. Upgrade when your AI traffic demands enterprise guardrails.
           </p>
         </div>
@@ -48,40 +54,46 @@ export default function Pricing() {
           {TIERS.map((tier) => (
             <div
               key={tier.id}
-              className={`flex flex-col rounded-3xl p-8 border transition-all ${
+              className={`flex flex-col rounded-3xl p-8 relative overflow-hidden transition-all duration-500 ${
                 tier.popular
-                  ? "bg-indigo-500/10 border-indigo-500/30 shadow-2xl shadow-indigo-500/10 transform md:-translate-y-4"
-                  : "bg-white/[0.02] border-white/10 hover:bg-white/[0.05]"
+                  ? "glass-panel gradient-border bg-white/[0.03] shadow-2xl shadow-indigo-500/20 transform md:-translate-y-4 border-white/10"
+                  : "glass-panel glass-panel-hover bg-white/[0.02] border-white/10 hover:border-brand-blue/40"
               }`}
             >
               {tier.popular && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-blue text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                <div className="absolute top-0 right-0 z-20 bg-gradient-to-r from-brand-blue via-brand-purple to-brand-purple text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
                   Most Popular
                 </div>
               )}
-              <h3 className="text-xl font-medium text-white mb-2">{tier.name}</h3>
-              <p className="text-slate-400 text-sm mb-6">{tier.description}</p>
-              <div className="mb-8">
-                <span className="text-4xl font-bold text-white">{tier.price}</span>
-                <span className="text-slate-500">/mo</span>
+              <div className="relative z-10">
+                <h3 className={`text-xl font-bold mb-2 ${tier.popular ? "text-brand-blue" : "text-white"}`}>
+                  {tier.name}
+                </h3>
+                <p className="text-slate-400 text-sm mb-6">{tier.description}</p>
+                <div className="mb-8">
+                  <span className={`text-5xl font-bold ${tier.popular ? "text-white" : "text-slate-300"}`}>
+                    {tier.price}
+                  </span>
+                  <span className="text-slate-500 ml-2">/mo</span>
+                </div>
+                <ul className="flex-1 space-y-4 mb-8 text-sm text-slate-400">
+                  {tier.features.map((f) => (
+                    <li key={f} className="flex items-center gap-3">
+                      <span className={`text-xs ${tier.popular ? "text-emerald-400" : "text-slate-500"}`}>�</span>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  className={`w-full py-3.5 rounded-xl font-bold transition-all duration-300 ${
+                    tier.popular
+                      ? "bg-gradient-to-r from-brand-blue via-brand-purple to-brand-blue text-white shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:scale-[1.02]"
+                      : "bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-white/20 backdrop-blur-sm"
+                  }`}
+                >
+                  {tier.cta}
+                </button>
               </div>
-              <ul className="flex-1 space-y-4 mb-8 text-sm text-slate-300">
-                {tier.features.map((f) => (
-                  <li key={f} className="flex items-center gap-3">
-                    <span className="text-emerald-400">�</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <button
-                className={`w-full py-3 rounded-xl font-medium transition-colors ${
-                  tier.ctaVariant === "primary"
-                    ? "bg-brand-blue text-white hover:bg-blue-600"
-                    : "border border-white/10 text-white hover:bg-white/5"
-                }`}
-              >
-                {tier.cta}
-              </button>
             </div>
           ))}
         </div>
